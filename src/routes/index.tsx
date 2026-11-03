@@ -45,6 +45,7 @@ const reviews = [
 ];
 
 function Home() {
+  const heroRef = useHeroParallax<HTMLElement>();
   const best = products.filter((p) => p.tier !== "Belvish Study").slice(0, 8);
   const fresh = products.filter((p) => p.isNew);
   return (
