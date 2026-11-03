@@ -43,6 +43,13 @@
       "when": 1793454699227,
       "tag": "0005_popup_images_admin_read",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1793713803201,
+      "tag": "0006_public_read_live_popup_image",
+      "breakpoints": true
     }
   ]
 }
