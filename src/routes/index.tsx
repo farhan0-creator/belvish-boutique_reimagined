@@ -12,6 +12,7 @@ import { families, houses, products } from "@/lib/catalog";
 import { Eyebrow, ProductCard, PromiseStrip, PromoBanner } from "@/components/Shell";
 import { Finder } from "@/components/Finder";
 import { assetUrl } from "@/lib/asset-url";
+import { useHeroParallax } from "@/components/Luxe";
 
 const hero = assetUrl(heroAsset);
 const heroVideo = assetUrl(heroVideoAsset);
@@ -44,26 +45,37 @@ const reviews = [
 ];
 
 function Home() {
+  const heroRef = useHeroParallax<HTMLElement>();
   const best = products.filter((p) => p.tier !== "Belvish Study").slice(0, 8);
   const fresh = products.filter((p) => p.isNew);
   return (
     <main>
       {/* Hero */}
-      <section className="relative -mt-[73px] flex min-h-screen items-end overflow-hidden rounded-b-[3rem]">
-        <video src={heroVideo} autoPlay muted loop playsInline poster={hero} ref={(v) => { if (v) v.muted = true; }} className="absolute inset-0 h-full w-full object-cover object-[80%_50%]" />
+      <section ref={heroRef} className="hero-parallax relative -mt-[73px] flex min-h-screen items-end overflow-hidden rounded-b-[3rem]">
+        <div className="hero-layer-media absolute inset-0">
+          <video src={heroVideo} autoPlay muted loop playsInline poster={hero} ref={(v) => { if (v) v.muted = true; }} className="h-full w-full object-cover object-[80%_50%]" />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+        <div aria-hidden="true" className="hero-layer-orbs pointer-events-none absolute inset-0">
+          <span className="hero-orb hero-orb-a" />
+          <span className="hero-orb hero-orb-b" />
+          <span className="hero-orb hero-orb-c" />
+        </div>
+        <div aria-hidden="true" className="hero-layer-dim pointer-events-none absolute inset-0 bg-background" />
         <div className="relative mx-auto w-full max-w-7xl px-6 pb-20 pt-40">
-          <div className="animate-rise">
-            <Eyebrow>Maison de parfum · Curated in India</Eyebrow>
-            <h1 className="mt-8 max-w-3xl font-display text-6xl font-light leading-[0.9] sm:text-7xl md:text-[8.5rem]">Find your <em>signature</em> scent</h1>
-            <p className="mt-8 max-w-md text-lg font-light text-muted-foreground">Niche houses and haute parfumerie, edited with patience. Delivered free to your door — pay in cash when it arrives.</p>
-            <div className="mt-12 flex flex-wrap gap-4">
-              <Link to="/shop" className="btn-gold">Shop the collection <ArrowRight className="h-4 w-4" /></Link>
-              <Link to="/finder" className="btn-ghost-gold">Discover your scent</Link>
+          <div className="hero-layer-copy">
+            <div className="animate-rise">
+              <Eyebrow>Maison de parfum · Curated in India</Eyebrow>
+              <h1 className="mt-8 max-w-3xl font-display text-6xl font-light leading-[0.9] sm:text-7xl md:text-[8.5rem]">Find your <em>signature</em> scent</h1>
+              <p className="mt-8 max-w-md text-lg font-light text-muted-foreground">Niche houses and haute parfumerie, edited with patience. Delivered free to your door — pay in cash when it arrives.</p>
+              <div className="mt-12 flex flex-wrap gap-4">
+                <Link to="/shop" className="btn-gold">Shop the collection <ArrowRight className="h-4 w-4" /></Link>
+                <Link to="/finder" className="btn-ghost-gold">Discover your scent</Link>
+              </div>
             </div>
           </div>
-          <dl className="mt-20 grid max-w-xl grid-cols-3 gap-6 border-t border-border pt-8">
+          <dl className="hero-layer-stats mt-20 grid max-w-xl grid-cols-3 gap-6 border-t border-border pt-8">
             {stats.map((s) => (
               <div key={s.l}>
                 <dt className="font-display text-4xl text-gold-gradient">{s.n}</dt>

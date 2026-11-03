@@ -1,4 +1,47 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+/**
+ * Layered hero parallax: writes scroll progress (--hp, 0..1) and pointer offset
+ * (--hx/--hy, -0.5..0.5) as CSS variables on the element. Styles live in styles.css
+ * (.hero-parallax). No React state, so it never re-renders or affects hydration.
+ */
+export function useHeroParallax<T extends HTMLElement>() {
+  const ref = useRef<T>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let raf = 0, mx = 0, my = 0, tx = 0, ty = 0;
+    const update = () => {
+      raf = 0;
+      const r = el.getBoundingClientRect();
+      const p = Math.min(1, Math.max(0, -r.top / (r.height || 1)));
+      // ease the pointer so the depth drift feels weighty, not twitchy
+      tx += (mx - tx) * 0.12; ty += (my - ty) * 0.12;
+      el.style.setProperty("--hp", p.toFixed(4));
+      el.style.setProperty("--hx", tx.toFixed(4));
+      el.style.setProperty("--hy", ty.toFixed(4));
+      if (Math.abs(mx - tx) > 0.001 || Math.abs(my - ty) > 0.001) queue();
+    };
+    const queue = () => { if (!raf) raf = requestAnimationFrame(update); };
+    const onMove = (e: PointerEvent) => {
+      if (e.pointerType !== "mouse") return;
+      mx = e.clientX / window.innerWidth - 0.5;
+      my = e.clientY / window.innerHeight - 0.5;
+      queue();
+    };
+    update();
+    window.addEventListener("scroll", queue, { passive: true });
+    window.addEventListener("resize", queue);
+    window.addEventListener("pointermove", onMove, { passive: true });
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", queue);
+      window.removeEventListener("resize", queue);
+      window.removeEventListener("pointermove", onMove);
+    };
+  }, []);
+  return ref;
+}
 import { useRouterState } from "@tanstack/react-router";
 
 /** Brand reveal shown once per browser session. */
