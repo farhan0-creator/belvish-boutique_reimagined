@@ -2,6 +2,8 @@ import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import { useEffect, useState, type FormEvent } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { lovable } from '@/integrations/lovable/index';
+import { createLovableAuth } from '@lovable.dev/cloud-auth-js';
+import { LOVABLE_SITE_ORIGIN } from '@/lib/asset-url';
 import { accountHead, useAuth } from '@/lib/auth';
 import { Button } from '@/components/ui/button';
 
@@ -45,9 +47,14 @@ function AuthPage() {
   async function google() {
     setBusy(true); setMessage('');
     sessionStorage.setItem(OAUTH_FLAG, '1');
-    const result = await lovable.auth.signInWithOAuth('google', { redirect_uri: `${window.location.origin}/auth` });
+    const redirect_uri = `${window.location.origin}/auth`;
+    // Off Lovable hosting (e.g. Vercel) there is no /~oauth route, so start sign-in via the Lovable site.
+    const result = LOVABLE_SITE_ORIGIN
+      ? await createLovableAuth({ oauthBrokerUrl: `${LOVABLE_SITE_ORIGIN}/~oauth/initiate` }).signInWithOAuth('google', { redirect_uri })
+      : await lovable.auth.signInWithOAuth('google', { redirect_uri });
     if (result.error) { sessionStorage.removeItem(OAUTH_FLAG); setMessage('Google sign-in didn’t complete. Please try again.'); setBusy(false); return; }
     if (result.redirected) return;
+    if ('tokens' in result && result.tokens && LOVABLE_SITE_ORIGIN) await supabase.auth.setSession(result.tokens);
     sessionStorage.removeItem(OAUTH_FLAG);
     await navigate({ to: '/account' });
   }
