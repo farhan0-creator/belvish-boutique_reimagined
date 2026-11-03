@@ -44,8 +44,17 @@ function isH3SwallowedErrorBody(body: string): boolean {
   }
 }
 
+// Hosts like Vercel don't load .env at runtime; fall back to the public (publishable) values
+// baked into the build so checkout, accounts and store settings keep working there.
+function ensurePublicSupabaseEnv() {
+  if (typeof process === "undefined" || !process.env) return;
+  process.env["SUPABASE_URL"] ||= import.meta.env["VITE_SUPABASE_URL"];
+  process.env["SUPABASE_PUBLISHABLE_KEY"] ||= import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"];
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
+    ensurePublicSupabaseEnv();
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);

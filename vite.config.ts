@@ -10,7 +10,7 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 // (Vercel, Netlify) must load them from the Lovable site instead. ASSET_ORIGIN overrides.
 const LOVABLE_ORIGIN = "https://belvish-boutique-reimagined.lovable.app";
 const assetOrigin =
-  process.env.ASSET_ORIGIN ?? (process.env.VERCEL || process.env.NETLIFY ? LOVABLE_ORIGIN : "");
+  process.env["ASSET_ORIGIN"] ?? (process.env["VERCEL"] || process.env["NETLIFY"] ? LOVABLE_ORIGIN : "");
 
 export default defineConfig({
   tanstackStart: {

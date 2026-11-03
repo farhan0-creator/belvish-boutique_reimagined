@@ -6,6 +6,7 @@ import { accountHead } from '@/lib/auth';
 import { Eyebrow } from '@/components/Shell';
 import { MyOrders, ProfileCard } from '@/components/CustomerAccount';
 import { AdminDashboard } from '@/components/AdminDashboard';
+import { LOVABLE_SITE_ORIGIN } from '@/lib/asset-url';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const ADMIN_EMAIL = 'zacian061@gmail.com';
@@ -66,7 +67,15 @@ function Account() {
               <TabsTrigger value="store" className="rounded-full">Store dashboard</TabsTrigger>
               <TabsTrigger value="me" className="rounded-full">My details &amp; orders</TabsTrigger>
             </TabsList>
-            <TabsContent value="store" className="mt-10"><AdminDashboard /></TabsContent>
+            <TabsContent value="store" className="mt-10">
+              {LOVABLE_SITE_ORIGIN ? (
+                // The dashboard needs Lovable hosting's private store key, which other hosts don't have.
+                <div className="rounded-2xl border border-border p-8">
+                  <p className="text-muted-foreground">The store dashboard opens on your main BELVISH site (same orders and settings).</p>
+                  <a href={`${LOVABLE_SITE_ORIGIN}/account`} className="btn-ghost-gold mt-6 inline-block">Open store dashboard</a>
+                </div>
+              ) : <AdminDashboard />}
+            </TabsContent>
             <TabsContent value="me" className="mt-10">{customer}</TabsContent>
           </Tabs>
         ) : customer}
