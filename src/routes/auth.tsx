@@ -44,19 +44,25 @@ function AuthPage() {
     } catch (error) { setMessage(error instanceof Error ? error.message : 'Please try again.'); }
     finally { setBusy(false); }
   }
-  async function google() {
+  async function socialSignIn(provider: 'google' | 'apple') {
     setBusy(true); setMessage('');
+    try {
     sessionStorage.setItem(OAUTH_FLAG, '1');
     const redirect_uri = `${window.location.origin}/auth`;
     // Off Lovable hosting (e.g. Vercel) there is no /~oauth route, so start sign-in via the Lovable site.
     const result = LOVABLE_SITE_ORIGIN
-      ? await createLovableAuth({ oauthBrokerUrl: `${LOVABLE_SITE_ORIGIN}/~oauth/initiate` }).signInWithOAuth('google', { redirect_uri })
-      : await lovable.auth.signInWithOAuth('google', { redirect_uri });
-    if (result.error) { sessionStorage.removeItem(OAUTH_FLAG); setMessage('Google sign-in didn’t complete. Please try again.'); setBusy(false); return; }
+      ? await createLovableAuth({ oauthBrokerUrl: `${LOVABLE_SITE_ORIGIN}/~oauth/initiate` }).signInWithOAuth(provider, { redirect_uri })
+      : await lovable.auth.signInWithOAuth(provider, { redirect_uri });
+    if (result.error) throw result.error;
     if (result.redirected) return;
     if ('tokens' in result && result.tokens && LOVABLE_SITE_ORIGIN) await supabase.auth.setSession(result.tokens);
     sessionStorage.removeItem(OAUTH_FLAG);
     await navigate({ to: '/account' });
+    } catch {
+      sessionStorage.removeItem(OAUTH_FLAG);
+      setMessage(`${provider === 'apple' ? 'Apple' : 'Google'} sign-in didn’t complete. Please try again.`);
+      setBusy(false);
+    }
   }
   useEffect(() => {
     if (user && sessionStorage.getItem(OAUTH_FLAG)) { sessionStorage.removeItem(OAUTH_FLAG); void navigate({ to: '/account' }); }
@@ -65,9 +71,13 @@ function AuthPage() {
   return <main className="mx-auto max-w-md px-6 py-20">
     <h1 className="font-display text-4xl">{forgot ? 'Reset password' : signup ? 'Create your account' : 'Welcome back'}</h1>
     {!forgot && <>
-      <Button type="button" variant="outline" disabled={busy} onClick={google} className="mt-8 w-full gap-3">
+      <Button type="button" variant="outline" disabled={busy} onClick={() => socialSignIn('google')} className="mt-8 w-full gap-3">
         <svg aria-hidden viewBox="0 0 24 24" className="h-4 w-4"><path fill="currentColor" d="M21.35 11.1H12v2.9h5.35c-.23 1.5-1.7 4.4-5.35 4.4-3.22 0-5.85-2.67-5.85-5.95S8.78 6.5 12 6.5c1.83 0 3.06.78 3.76 1.45l2.56-2.47C16.68 3.95 14.55 3 12 3 6.98 3 3 7.03 3 12s3.98 9 9 9c5.2 0 8.64-3.65 8.64-8.8 0-.6-.07-1.05-.29-1.1Z" /></svg>
         Continue with Google
+      </Button>
+      <Button type="button" variant="outline" disabled={busy} onClick={() => socialSignIn('apple')} className="mt-3 w-full gap-3">
+        <svg aria-hidden="true" viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="currentColor"><path d="M17.05 12.54c.02 3.05 2.67 4.06 2.7 4.08-.02.07-.42 1.45-1.4 2.87-.85 1.23-1.73 2.46-3.12 2.48-1.36.03-1.8-.8-3.36-.8-1.57 0-2.05.78-3.34.83-1.34.05-2.36-1.33-3.22-2.55-1.75-2.51-3.08-7.09-1.29-10.18.89-1.53 2.47-2.5 4.19-2.52 1.3-.02 2.54.88 3.35.88.81 0 2.33-1.09 3.93-.93.67.03 2.55.27 3.76 2.03-.1.06-2.25 1.3-2.2 3.81ZM14.5 5.03c.72-.87 1.2-2.08 1.07-3.28-1.04.04-2.31.69-3.06 1.56-.67.77-1.26 2-1.1 3.18 1.16.09 2.35-.59 3.09-1.46Z" /></svg>
+        Continue with Apple
       </Button>
       <div className="mt-6 flex items-center gap-4 text-xs uppercase tracking-[0.3em] text-muted-foreground"><span className="h-px flex-1 bg-border" />or<span className="h-px flex-1 bg-border" /></div>
     </>}
