@@ -93,6 +93,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "google-site-verification", content: "dq-VPqsjVU9iXAJFwKfMalhrKA5oikkYw2r2CqVknqQ" },
       { title: "BELVISH Fragrance" },
       { name: "description", content: "A considered fragrance counter for the curious." },
       { property: "og:title", content: "BELVISH Fragrance" },
