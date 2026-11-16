@@ -1,0 +1,1 @@
+DROP POLICY IF EXISTS "Anyone reads the live popup image" ON storage.objects;

@@ -83,9 +83,10 @@ export const getStoreSettings = createServerFn({ method: "GET" }).handler(async 
     let popup_image_src = /^https:\/\/\S+$/i.test(data.popup_image_url) ? data.popup_image_url : "";
     if (isPopupStoragePath(data.popup_image_url)) {
       try {
-        // Private folder; a storage policy lets the public read only the live pop-up image,
-        // so this works without the service key (e.g. on Vercel).
-        const { data: signed } = await supabase.storage
+        // Private folder: only the server signs a short-lived link for the live pop-up image.
+        if (!process.env["SUPABASE_SERVICE_ROLE_KEY"]) throw new Error("no key");
+        const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+        const { data: signed } = await supabaseAdmin.storage
           .from(POPUP_BUCKET)
           .createSignedUrl(data.popup_image_url.slice(POPUP_BUCKET.length + 1), 60 * 60 * 24);
         popup_image_src = signed?.signedUrl ?? "";

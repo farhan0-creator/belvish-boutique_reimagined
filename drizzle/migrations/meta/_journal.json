@@ -50,6 +50,13 @@
       "when": 1793713803201,
       "tag": "0006_public_read_live_popup_image",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1794839197050,
+      "tag": "0007_drop_public_popup_image_read",
+      "breakpoints": true
     }
   ]
 }
