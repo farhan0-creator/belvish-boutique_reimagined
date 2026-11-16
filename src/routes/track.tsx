@@ -1,3 +1,4 @@
+import { canonicalLinks, ogUrl } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { Check, Loader2 } from "lucide-react";
@@ -7,7 +8,9 @@ import { Eyebrow } from "@/components/Shell";
 
 export const Route = createFileRoute("/track")({
   head: () => ({
+    links: canonicalLinks("/track"),
     meta: [
+      ogUrl("/track"),
       { title: "Track Your Order — BELVISH" },
       { name: "description", content: "Check the status of your BELVISH Cash on Delivery order with your order number and mobile number." },
       { property: "og:title", content: "Track Your Order — BELVISH" },

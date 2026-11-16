@@ -1,10 +1,13 @@
+import { canonicalLinks, ogUrl } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { families, products } from "@/lib/catalog";
 import { Eyebrow } from "@/components/Shell";
 
 export const Route = createFileRoute("/families")({
   head: () => ({
+    links: canonicalLinks("/families"),
     meta: [
+      ogUrl("/families"),
       { title: "Scent Families — BELVISH" },
       { name: "description", content: "A beginner's guide to fresh, citrus, woody, floral, amber and gourmand fragrance families." },
       { property: "og:type", content: "website" },

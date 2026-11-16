@@ -1,3 +1,4 @@
+import { canonicalLinks, ogUrl } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
@@ -7,7 +8,9 @@ import { Eyebrow, ProductCard, PromoBanner } from "@/components/Shell";
 export const Route = createFileRoute("/shop")({
   validateSearch: (s: Record<string, unknown>): { family?: string | undefined } => ({ family: typeof s["family"] === "string" ? s["family"] : undefined }),
   head: () => ({
+    links: canonicalLinks("/shop"),
     meta: [
+      ogUrl("/shop"),
       { title: "The Edit — BELVISH Fragrance Catalog" },
       { name: "description", content: "Browse the full BELVISH fragrance edit with scent notes and INR prices. Search, filter by scent family and sort by price." },
       { property: "og:type", content: "website" },

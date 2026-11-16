@@ -1,3 +1,4 @@
+import { canonicalLinks, noindex, ogUrl } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { products } from "@/lib/catalog";
 import { useWishlist } from "@/lib/wishlist";
@@ -6,7 +7,10 @@ import { Eyebrow, ProductCard } from "@/components/Shell";
 
 export const Route = createFileRoute("/wishlist")({
   head: () => ({
+    links: canonicalLinks("/wishlist"),
     meta: [
+      ogUrl("/wishlist"),
+      noindex,
       { title: "Your Wishlist — BELVISH" },
       { name: "description", content: "The fragrances you've saved at BELVISH." },
       { property: "og:title", content: "Your Wishlist — BELVISH" },

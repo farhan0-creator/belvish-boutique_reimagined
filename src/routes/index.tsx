@@ -1,3 +1,4 @@
+import { canonicalLinks, ogUrl } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Quote, Star } from "lucide-react";
 import heroAsset from "@/assets/hero-lux.jpg.asset.json";
@@ -20,7 +21,9 @@ const bloom = assetUrl(bloomAsset);
 
 export const Route = createFileRoute("/")({
   head: () => ({
+    links: canonicalLinks("/"),
     meta: [
+      ogUrl("/"),
       { title: "BELVISH — Luxury Niche Perfumes in India | Cash on Delivery" },
       { name: "description", content: "Shop niche and haute parfumerie in India. Free delivery, Cash on Delivery, complimentary gift wrap and a guided fragrance finder." },
       { property: "og:title", content: "BELVISH — Find Your Signature Scent" },

@@ -1,3 +1,4 @@
+import { canonicalLinks, ogUrl } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { Clock, Mail, MessageCircle, Phone } from "lucide-react";
 import ritual from "@/assets/ritual.jpg";
@@ -6,7 +7,9 @@ import { Eyebrow } from "@/components/Shell";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
+    links: canonicalLinks("/contact"),
     meta: [
+      ogUrl("/contact"),
       { title: "Contact BELVISH — WhatsApp, Phone & Email" },
       { name: "description", content: "Reach BELVISH fragrance client care on WhatsApp, phone or email. Open 12:00 pm to 12:00 am, every day." },
       { property: "og:title", content: "Contact BELVISH" },

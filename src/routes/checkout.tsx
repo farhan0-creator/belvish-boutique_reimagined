@@ -1,3 +1,4 @@
+import { canonicalLinks, noindex, ogUrl } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useEffect, useState, type FormEvent } from "react";
@@ -13,7 +14,10 @@ import { whatsappLink } from "@/lib/contact";
 
 export const Route = createFileRoute("/checkout")({
   head: () => ({
+    links: canonicalLinks("/checkout"),
     meta: [
+      ogUrl("/checkout"),
+      noindex,
       { title: "Checkout — Cash on Delivery | BELVISH" },
       { name: "description", content: "Complete your BELVISH order with free delivery across India. Pay in cash when your fragrance arrives." },
       { property: "og:title", content: "Checkout — BELVISH" },

@@ -1,10 +1,13 @@
+import { canonicalLinks, ogUrl } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { Eyebrow } from "@/components/Shell";
 import { Finder } from "@/components/Finder";
 
 export const Route = createFileRoute("/finder")({
   head: () => ({
+    links: canonicalLinks("/finder"),
     meta: [
+      ogUrl("/finder"),
       { title: "Fragrance Finder — BELVISH" },
       { name: "description", content: "Answer three simple questions and get beginner-friendly fragrance starting points." },
       { property: "og:type", content: "website" },

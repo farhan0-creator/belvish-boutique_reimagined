@@ -8,6 +8,7 @@ import { ShareButton, WishButton } from "@/components/Extras";
 import { addWorkingDays, useRecentlyViewed } from "@/lib/recent";
 import { whatsappLink } from "@/lib/contact";
 import { LuxeSeals, ScentPyramid } from "@/components/Luxe";
+import { abs, canonicalLinks, ogUrl } from "@/lib/seo";
 import { Crumbs, ScentProfile, StickyBuyBar, ZoomImage } from "@/components/Premium";
 
 export const Route = createFileRoute("/product/$slug")({
@@ -16,9 +17,11 @@ export const Route = createFileRoute("/product/$slug")({
     if (!p) throw notFound();
     return p;
   },
-  head: ({ loaderData }) => ({
+  head: ({ loaderData, params }) => ({
+    links: loaderData ? canonicalLinks(`/product/${params.slug}`) : [],
     meta: loaderData
       ? [
+          ogUrl(`/product/${params.slug}`),
           { title: `${loaderData.name} — BELVISH` },
           { name: "description", content: loaderData.description },
           { property: "og:title", content: `${loaderData.name} — BELVISH` },
@@ -36,7 +39,21 @@ export const Route = createFileRoute("/product/$slug")({
             name: loaderData.name,
             brand: { "@type": "Brand", name: loaderData.house },
             description: loaderData.description,
-            offers: { "@type": "Offer", priceCurrency: "INR", price: loaderData.price, availability: "https://schema.org/InStock" },
+            category: loaderData.families.join(", "),
+            url: abs(`/product/${params.slug}`),
+            ...(loaderData.images[0]?.startsWith("http") ? { image: loaderData.images } : {}),
+            offers: { "@type": "Offer", priceCurrency: "INR", price: loaderData.price, url: abs(`/product/${params.slug}`) },
+          }),
+        }, {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: abs("/") },
+              { "@type": "ListItem", position: 2, name: "The edit", item: abs("/shop") },
+              { "@type": "ListItem", position: 3, name: loaderData.name, item: abs(`/product/${params.slug}`) },
+            ],
           }),
         }]
       : [],
@@ -70,7 +87,7 @@ function ProductPage() {
           <div className="mt-4 grid grid-cols-3 gap-3">
             {p.images.map((src, i) => (
               <button key={i} onClick={() => setImg(i)} className={`overflow-hidden rounded-2xl border-2 ${i === img ? "border-primary" : "border-transparent"}`}>
-                <img src={src} alt="" className="aspect-square w-full rounded-xl object-cover" />
+                <img src={src} alt={`${p.name} view ${i + 1}`} loading="lazy" className="aspect-square w-full rounded-xl object-cover" />
               </button>
             ))}
           </div>

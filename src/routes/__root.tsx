@@ -22,6 +22,7 @@ import { ScrollHelpers, WhatsAppFloat } from "@/components/Extras";
 import { Toaster } from "@/components/ui/sonner";
 import { CursorGlow, IntroCurtain, MotionDetails, RevealOnScroll } from "@/components/Luxe";
 import { getStoreSettings } from "@/lib/store-settings.functions";
+import { SITE_URL } from "@/lib/seo";
 import { PopupAd } from "@/components/PopupAd";
 
 function NotFoundComponent() {
@@ -97,8 +98,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "BELVISH Fragrance" },
       { property: "og:description", content: "A considered fragrance counter for the curious." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "BELVISH" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    scripts: [{
+      type: "application/ld+json",
+      children: JSON.stringify([
+        { "@context": "https://schema.org", "@type": "Organization", name: "BELVISH", url: SITE_URL, description: "BELVISH is an online fragrance store in India offering niche and luxury perfumes with free delivery and Cash on Delivery." },
+        { "@context": "https://schema.org", "@type": "WebSite", name: "BELVISH", url: SITE_URL },
+      ]),
+    }],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
