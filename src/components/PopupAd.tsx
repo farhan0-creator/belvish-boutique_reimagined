@@ -28,7 +28,7 @@ export function PopupCard({ content, open, onOpenChange }: { content: PopupConte
       <DialogContent className="max-w-lg overflow-hidden rounded-[2rem] border-primary/40 p-0 sm:rounded-[2rem]">
         {content.imageSrc && <img src={content.imageSrc} alt="" className="max-h-[50vh] w-full object-cover" />}
         <div className="px-8 pb-8 pt-6 text-center">
-          <p className="text-[10px] uppercase tracking-[0.4em] text-accent">BELVISH</p>
+          <p className="text-[10px] uppercase tracking-[0.4em] text-accent">OLFÉRA</p>
           <DialogTitle className="mt-3 font-display text-4xl font-light leading-tight">{content.title || " "}</DialogTitle>
           <DialogDescription className={`mt-3 text-sm leading-relaxed ${content.text ? "" : "sr-only"}`}>{content.text || "Special offer"}</DialogDescription>
           {href && content.buttonText && (

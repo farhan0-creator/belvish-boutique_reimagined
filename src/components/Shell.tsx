@@ -69,7 +69,7 @@ export function Header() {
           <button className="md:hidden" onClick={() => setMenu(!menu)} aria-label="Menu">
             {menu ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
-          <Link to="/" className="font-display text-2xl tracking-[0.35em]">BELVISH</Link>
+          <Link to="/" className="font-display text-2xl tracking-[0.35em]">OLFÉRA</Link>
           <nav className="hidden gap-10 text-xs uppercase tracking-[0.2em] text-muted-foreground md:flex">
             {nav.map((n) => (
               <Link key={n.to} to={n.to} className="transition-colors hover:text-foreground" activeProps={{ className: "text-accent" }}>{n.label}</Link>
@@ -131,14 +131,14 @@ export function Footer() {
     <footer className="mt-24 rounded-t-[3rem] border-t border-border bg-secondary">
       <div className="mx-auto grid max-w-7xl items-center gap-8 border-b border-border px-6 py-14 md:grid-cols-2">
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-accent">The Belvish letter</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-accent">The Olféra letter</p>
           <p className="mt-3 font-display text-4xl font-light">New arrivals and rare launches, <em>first.</em></p>
         </div>
         <Newsletter />
       </div>
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-4">
         <div className="md:col-span-1">
-          <p className="font-display text-3xl tracking-[0.35em]">BELVISH</p>
+          <p className="font-display text-3xl tracking-[0.35em]">OLFÉRA</p>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">A maison of niche and haute parfumerie, curated in India for people who wear scent as a signature.</p>
         </div>
         <div>
@@ -164,14 +164,14 @@ export function Footer() {
           <ul className="mt-5 space-y-3 text-sm text-muted-foreground">
             <li><a href={`mailto:${CONTACT.email}`} className="hover:text-foreground">{CONTACT.email}</a></li>
             <li><a href={CONTACT.phoneHref} className="hover:text-foreground">{CONTACT.phoneDisplay}</a></li>
-            <li><a href={whatsappLink("Hi BELVISH!")} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">WhatsApp us</a></li>
+            <li><a href={whatsappLink("Hi OLFÉRA!")} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">WhatsApp us</a></li>
             <li>{CONTACT.hours}</li>
           </ul>
         </div>
       </div>
       <div className="gold-rule mx-auto max-w-7xl opacity-40" />
       <div className="mx-auto flex max-w-7xl flex-col justify-between gap-2 px-6 py-6 text-xs text-muted-foreground sm:flex-row">
-        <p>© {new Date().getFullYear()} Belvish Fragrance. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Olféra Fragrance. All rights reserved.</p>
         <p>Prices in INR, inclusive of all taxes.</p>
       </div>
     </footer>

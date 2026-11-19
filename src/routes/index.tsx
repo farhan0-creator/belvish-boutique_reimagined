@@ -24,9 +24,9 @@ export const Route = createFileRoute("/")({
     links: canonicalLinks("/"),
     meta: [
       ogUrl("/"),
-      { title: "BELVISH — Luxury Niche Perfumes in India | Cash on Delivery" },
+      { title: "OLFÉRA — Luxury Niche Perfumes in India | Cash on Delivery" },
       { name: "description", content: "Shop niche and haute parfumerie in India. Free delivery, Cash on Delivery, complimentary gift wrap and a guided fragrance finder." },
-      { property: "og:title", content: "BELVISH — Find Your Signature Scent" },
+      { property: "og:title", content: "OLFÉRA — Find Your Signature Scent" },
       { property: "og:description", content: "Niche and haute parfumerie with free delivery and Cash on Delivery across India." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -49,7 +49,7 @@ const reviews = [
 
 function Home() {
   const heroRef = useHeroParallax<HTMLElement>();
-  const best = products.filter((p) => p.tier !== "Belvish Study").slice(0, 8);
+  const best = products.filter((p) => p.tier !== "Olféra Study").slice(0, 8);
   const fresh = products.filter((p) => p.isNew);
   return (
     <main>
@@ -176,7 +176,7 @@ function Home() {
           </div>
         </div>
         <div className="group relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-background">
-          <img src={giftBox} alt="Black and gold Belvish gift box with a crystal perfume bottle" loading="lazy" width={1200} height={1504} className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+          <img src={giftBox} alt="Black and gold Olféra gift box with a crystal perfume bottle" loading="lazy" width={1200} height={1504} className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
           <div className="absolute bottom-0 p-10">
             <Eyebrow>The art of gifting</Eyebrow>
@@ -230,7 +230,7 @@ function Home() {
       <section className="mx-auto grid max-w-7xl items-center gap-12 px-6 pb-12 md:grid-cols-2">
         <img src={bloom} alt="Tuberose blossoms and a glass vial in late afternoon sun" loading="lazy" className="aspect-square w-full rounded-[2.5rem] object-cover" />
         <div>
-          <Eyebrow>The Belvish journal · A beginner's note</Eyebrow>
+          <Eyebrow>The Olféra journal · A beginner's note</Eyebrow>
           <h2 className="mt-4 font-display text-5xl font-light md:text-6xl">A fragrance is more than its <em>first impression.</em></h2>
           <p className="mt-6 text-muted-foreground">Give it a little time. The bright opening gives way to a quieter heart, then settles close to skin. The best way to know a scent is to live with it.</p>
           <Link to="/finder" className="btn-ghost-gold mt-10">Take the fragrance finder</Link>

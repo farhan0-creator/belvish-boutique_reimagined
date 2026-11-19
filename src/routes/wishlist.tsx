@@ -11,9 +11,9 @@ export const Route = createFileRoute("/wishlist")({
     meta: [
       ogUrl("/wishlist"),
       noindex,
-      { title: "Your Wishlist — BELVISH" },
-      { name: "description", content: "The fragrances you've saved at BELVISH." },
-      { property: "og:title", content: "Your Wishlist — BELVISH" },
+      { title: "Your Wishlist — OLFÉRA" },
+      { name: "description", content: "The fragrances you've saved at OLFÉRA." },
+      { property: "og:title", content: "Your Wishlist — OLFÉRA" },
       { property: "og:description", content: "Fragrances saved for later." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

@@ -8,11 +8,11 @@ export const Route = createFileRoute("/finder")({
     links: canonicalLinks("/finder"),
     meta: [
       ogUrl("/finder"),
-      { title: "Fragrance Finder — BELVISH" },
+      { title: "Fragrance Finder — OLFÉRA" },
       { name: "description", content: "Answer three simple questions and get beginner-friendly fragrance starting points." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:title", content: "Fragrance Finder — BELVISH" },
+      { property: "og:title", content: "Fragrance Finder — OLFÉRA" },
       { property: "og:description", content: "Three questions to find your kind of scent." },
     ],
   }),

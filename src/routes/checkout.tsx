@@ -18,9 +18,9 @@ export const Route = createFileRoute("/checkout")({
     meta: [
       ogUrl("/checkout"),
       noindex,
-      { title: "Checkout — Cash on Delivery | BELVISH" },
-      { name: "description", content: "Complete your BELVISH order with free delivery across India. Pay in cash when your fragrance arrives." },
-      { property: "og:title", content: "Checkout — BELVISH" },
+      { title: "Checkout — Cash on Delivery | OLFÉRA" },
+      { name: "description", content: "Complete your OLFÉRA order with free delivery across India. Pay in cash when your fragrance arrives." },
+      { property: "og:title", content: "Checkout — OLFÉRA" },
       { property: "og:description", content: "Free delivery and Cash on Delivery across India." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -104,7 +104,7 @@ function Checkout() {
           <p className="mt-2 flex items-center justify-center gap-2 text-xs text-muted-foreground"><Banknote className="h-4 w-4" /> Cash on Delivery</p>
         </div>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
-          <a href={whatsappLink(`Hi BELVISH, I just placed order ${done.orderNumber} (Cash on Delivery).`)} target="_blank" rel="noopener noreferrer" className="btn-gold">Confirm on WhatsApp</a>
+          <a href={whatsappLink(`Hi OLFÉRA, I just placed order ${done.orderNumber} (Cash on Delivery).`)} target="_blank" rel="noopener noreferrer" className="btn-gold">Confirm on WhatsApp</a>
           {user ? <Link to="/account" className="btn-ghost-gold">View in My Account</Link> : <Link to="/track" className="btn-ghost-gold">Track this order</Link>}
         </div>
         <Link to="/shop" className="mt-6 inline-block text-xs uppercase tracking-[0.2em] text-muted-foreground underline underline-offset-8">Continue shopping</Link>

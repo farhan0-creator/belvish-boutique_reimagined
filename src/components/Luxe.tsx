@@ -58,7 +58,7 @@ export function IntroCurtain() {
   return (
     <div aria-hidden className={`lux-curtain fixed inset-0 z-[200] grid place-items-center bg-background transition-all duration-1000 ${phase === "leave" ? "pointer-events-none opacity-0 [clip-path:inset(0_0_100%_0)]" : "[clip-path:inset(0_0_0_0)]"}`}>
       <div className="text-center">
-        <p className="lux-letters font-display text-5xl tracking-[0.6em] text-gold-gradient md:text-7xl">BELVISH</p>
+        <p className="lux-letters font-display text-5xl tracking-[0.6em] text-gold-gradient md:text-7xl">OLFÉRA</p>
         <div className="lux-line mx-auto mt-6 h-px w-48 gold-rule" />
         <p className="mt-6 text-[10px] uppercase tracking-[0.5em] text-muted-foreground">Maison de Parfum</p>
       </div>

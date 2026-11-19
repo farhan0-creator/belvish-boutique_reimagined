@@ -10,9 +10,9 @@ export const Route = createFileRoute("/contact")({
     links: canonicalLinks("/contact"),
     meta: [
       ogUrl("/contact"),
-      { title: "Contact BELVISH — WhatsApp, Phone & Email" },
-      { name: "description", content: "Reach BELVISH fragrance client care on WhatsApp, phone or email. Open 12:00 pm to 12:00 am, every day." },
-      { property: "og:title", content: "Contact BELVISH" },
+      { title: "Contact OLFÉRA — WhatsApp, Phone & Email" },
+      { name: "description", content: "Reach OLFÉRA fragrance client care on WhatsApp, phone or email. Open 12:00 pm to 12:00 am, every day." },
+      { property: "og:title", content: "Contact OLFÉRA" },
       { property: "og:description", content: "WhatsApp, call or email our fragrance advisors — open noon to midnight daily." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -23,7 +23,7 @@ export const Route = createFileRoute("/contact")({
 
 function Contact() {
   const cards = [
-    { icon: MessageCircle, title: "WhatsApp", value: CONTACT.phoneDisplay, href: whatsappLink("Hi BELVISH, I'd like some help."), cta: "Start a chat", external: true },
+    { icon: MessageCircle, title: "WhatsApp", value: CONTACT.phoneDisplay, href: whatsappLink("Hi OLFÉRA, I'd like some help."), cta: "Start a chat", external: true },
     { icon: Phone, title: "Call us", value: CONTACT.phoneDisplay, href: CONTACT.phoneHref, cta: "Call now", external: false },
     { icon: Mail, title: "Email", value: CONTACT.email, href: `mailto:${CONTACT.email}`, cta: "Write to us", external: false },
   ];

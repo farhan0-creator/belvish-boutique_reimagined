@@ -11,7 +11,7 @@ const OAUTH_FLAG = 'belvish-google-return';
 
 export const Route = createFileRoute('/auth')({
   validateSearch: (search: Record<string, unknown>) => ({ signup: search['signup'] === true || search['signup'] === 'true' }),
-  head: () => accountHead('Your account', 'Sign in or create your BELVISH customer account.'),
+  head: () => accountHead('Your account', 'Sign in or create your OLFÉRA customer account.'),
   component: AuthPage,
 });
 

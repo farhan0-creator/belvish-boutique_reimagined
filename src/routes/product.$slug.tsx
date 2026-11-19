@@ -22,14 +22,14 @@ export const Route = createFileRoute("/product/$slug")({
     meta: loaderData
       ? [
           ogUrl(`/product/${params.slug}`),
-          { title: `${loaderData.name} — BELVISH` },
+          { title: `${loaderData.name} — OLFÉRA` },
           { name: "description", content: loaderData.description },
-          { property: "og:title", content: `${loaderData.name} — BELVISH` },
+          { property: "og:title", content: `${loaderData.name} — OLFÉRA` },
           { property: "og:description", content: loaderData.description },
           { property: "og:type", content: "product" },
           { name: "twitter:card", content: "summary_large_image" },
         ]
-      : [{ title: "Fragrance unavailable — BELVISH" }, { name: "robots", content: "noindex" }],
+      : [{ title: "Fragrance unavailable — OLFÉRA" }, { name: "robots", content: "noindex" }],
     scripts: loaderData
       ? [{
           type: "application/ld+json",
@@ -119,8 +119,8 @@ function ProductPage() {
             </p>
           )}
           <p className="mt-4 text-xs text-muted-foreground">Free delivery across India · Cash on Delivery · Dispatched in 24–48 hours.</p>
-          <div className="mt-3"><ShareButton title={`${p.name} — BELVISH`} /></div>
-          <a href={whatsappLink(`Hi BELVISH, I have a question about ${p.name} (${p.volume}).`)} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block text-xs uppercase tracking-[0.2em] text-accent underline underline-offset-8">Ask about this fragrance on WhatsApp</a>
+          <div className="mt-3"><ShareButton title={`${p.name} — OLFÉRA`} /></div>
+          <a href={whatsappLink(`Hi OLFÉRA, I have a question about ${p.name} (${p.volume}).`)} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block text-xs uppercase tracking-[0.2em] text-accent underline underline-offset-8">Ask about this fragrance on WhatsApp</a>
           <ScentPyramid notes={p.notes} />
           <ScentProfile p={p} />
           <LuxeSeals />

@@ -4,7 +4,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { accountHead, useAuth } from '@/lib/auth';
 import { Button } from '@/components/ui/button';
 
-export const Route = createFileRoute('/reset-password')({ head: () => accountHead('Reset password', 'Set a new password for your BELVISH account.'), component: ResetPassword });
+export const Route = createFileRoute('/reset-password')({ head: () => accountHead('Reset password', 'Set a new password for your OLFÉRA account.'), component: ResetPassword });
 function ResetPassword() {
   const { recovery } = useAuth();
   const [hashRecovery, setHashRecovery] = useState(false);

@@ -24,7 +24,7 @@ export function WishButton({ slug, className = "" }: { slug: string; className?:
 export function WhatsAppFloat() {
   return (
     <a
-      href={whatsappLink("Hi BELVISH, I'd like help choosing a fragrance.")}
+      href={whatsappLink("Hi OLFÉRA, I'd like help choosing a fragrance.")}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"

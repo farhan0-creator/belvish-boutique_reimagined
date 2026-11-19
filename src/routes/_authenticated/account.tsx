@@ -12,7 +12,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 const ADMIN_EMAIL = 'zacian061@gmail.com';
 
 export const Route = createFileRoute('/_authenticated/account')({
-  head: () => accountHead('My account', 'Your BELVISH profile, saved delivery address and order history.'),
+  head: () => accountHead('My account', 'Your OLFÉRA profile, saved delivery address and order history.'),
   component: Account,
 });
 
@@ -71,7 +71,7 @@ function Account() {
               {LOVABLE_SITE_ORIGIN ? (
                 // The dashboard needs Lovable hosting's private store key, which other hosts don't have.
                 <div className="rounded-2xl border border-border p-8">
-                  <p className="text-muted-foreground">The store dashboard opens on your main BELVISH site (same orders and settings).</p>
+                  <p className="text-muted-foreground">The store dashboard opens on your main OLFÉRA site (same orders and settings).</p>
                   <a href={`${LOVABLE_SITE_ORIGIN}/account`} className="btn-ghost-gold mt-6 inline-block">Open store dashboard</a>
                 </div>
               ) : <AdminDashboard />}

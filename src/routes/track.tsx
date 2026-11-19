@@ -11,9 +11,9 @@ export const Route = createFileRoute("/track")({
     links: canonicalLinks("/track"),
     meta: [
       ogUrl("/track"),
-      { title: "Track Your Order — BELVISH" },
-      { name: "description", content: "Check the status of your BELVISH Cash on Delivery order with your order number and mobile number." },
-      { property: "og:title", content: "Track Your Order — BELVISH" },
+      { title: "Track Your Order — OLFÉRA" },
+      { name: "description", content: "Check the status of your OLFÉRA Cash on Delivery order with your order number and mobile number." },
+      { property: "og:title", content: "Track Your Order — OLFÉRA" },
       { property: "og:description", content: "See where your fragrance is." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

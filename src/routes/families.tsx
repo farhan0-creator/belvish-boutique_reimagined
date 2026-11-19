@@ -8,11 +8,11 @@ export const Route = createFileRoute("/families")({
     links: canonicalLinks("/families"),
     meta: [
       ogUrl("/families"),
-      { title: "Scent Families — BELVISH" },
+      { title: "Scent Families — OLFÉRA" },
       { name: "description", content: "A beginner's guide to fresh, citrus, woody, floral, amber and gourmand fragrance families." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:title", content: "Scent Families — BELVISH" },
+      { property: "og:title", content: "Scent Families — OLFÉRA" },
       { property: "og:description", content: "Scent families are a starting point, not a set of rules." },
     ],
   }),

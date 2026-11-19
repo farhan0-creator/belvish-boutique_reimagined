@@ -9,9 +9,9 @@ export const Route = createFileRoute("/faq")({
     links: canonicalLinks("/faq"),
     meta: [
       ogUrl("/faq"),
-      { title: "Delivery, Cash on Delivery & FAQs — BELVISH" },
-      { name: "description", content: "Answers about BELVISH delivery, Cash on Delivery, authenticity, gift wrapping and order tracking." },
-      { property: "og:title", content: "FAQs — BELVISH" },
+      { title: "Delivery, Cash on Delivery & FAQs — OLFÉRA" },
+      { name: "description", content: "Answers about OLFÉRA delivery, Cash on Delivery, authenticity, gift wrapping and order tracking." },
+      { property: "og:title", content: "FAQs — OLFÉRA" },
       { property: "og:description", content: "Delivery, Cash on Delivery, authenticity and more." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
