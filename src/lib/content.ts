@@ -5,7 +5,7 @@ export type Article = InfoPage & { category: string };
 
 const contactLine = "WhatsApp, phone or email — details are on our Contact page.";
 
-export const pages: Record<string, InfoPage> = {
+export const pages = {
   about: {
     slug: "about", eyebrow: "About Olféra", title: "A fragrance discovery destination.",
     seoTitle: "About Olféra — Premium Fragrance Discovery in India",
@@ -78,7 +78,7 @@ export const pages: Record<string, InfoPage> = {
       { h: "Contact", p: [contactLine] },
     ],
   },
-};
+} satisfies Record<string, InfoPage>;
 
 export const articles: Article[] = [
   {
