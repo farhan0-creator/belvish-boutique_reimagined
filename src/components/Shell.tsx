@@ -139,7 +139,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-4">
         <div className="md:col-span-1">
           <p className="font-display text-3xl tracking-[0.35em]">OLFÉRA</p>
-          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">A maison of niche and haute parfumerie, curated in India for people who wear scent as a signature.</p>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">Olféra is a premium fragrance discovery destination in India. Discover authentic perfumes, find your signature scent.</p>
         </div>
         <div>
           <p className="text-xs uppercase tracking-[0.3em] text-accent">Shop</p>
@@ -148,6 +148,8 @@ export function Footer() {
             <li><Link to="/families" className="hover:text-foreground">Scent families</Link></li>
             <li><Link to="/finder" className="hover:text-foreground">Fragrance finder</Link></li>
             <li><Link to="/wishlist" className="hover:text-foreground">Your wishlist</Link></li>
+            <li><Link to="/journal" className="hover:text-foreground">Journal &amp; guides</Link></li>
+            <li><Link to="/about" className="hover:text-foreground">About Olféra</Link></li>
           </ul>
         </div>
         <div>
@@ -156,7 +158,9 @@ export function Footer() {
             <li><Link to="/account" className="hover:text-foreground">My account &amp; orders</Link></li>
             <li><Link to="/faq" className="hover:text-foreground">Delivery &amp; FAQs</Link></li>
             <li><Link to="/contact" className="hover:text-foreground">Contact us</Link></li>
-            <li>Cash on Delivery · Free delivery</li>
+            <li><Link to="/shipping" className="hover:text-foreground">Shipping</Link> · <Link to="/returns" className="hover:text-foreground">Returns</Link></li>
+            <li><Link to="/authenticity" className="hover:text-foreground">Authenticity</Link></li>
+            <li><Link to="/privacy" className="hover:text-foreground">Privacy</Link> · <Link to="/terms" className="hover:text-foreground">Terms</Link></li>
           </ul>
         </div>
         <div>

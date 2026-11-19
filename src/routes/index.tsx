@@ -1,6 +1,6 @@
 import { canonicalLinks, ogUrl } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Quote, Star } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import heroAsset from "@/assets/hero-lux.jpg.asset.json";
 import heroVideoAsset from "@/assets/belvish-hero-spray.mp4.asset.json";
 import bloomAsset from "@/assets/journal-bloom.jpg.asset.json";
@@ -38,13 +38,13 @@ export const Route = createFileRoute("/")({
 const stats = [
   { n: "14", l: "Signature fragrances" },
   { n: "6", l: "Independent houses" },
-  { n: "4.9★", l: "Average client rating" },
+  { n: "COD", l: "Free delivery, pay on arrival" },
 ];
 
-const reviews = [
-  { name: "Ananya R.", city: "Mumbai", text: "Aurum Extrait is unreal — I get stopped every time I wear it. The packaging felt like opening jewellery.", scent: "Aurum Extrait" },
-  { name: "Karan M.", city: "Bengaluru", text: "The fragrance finder pointed me to Santal Blanc Mysore. Arrived in three days, paid cash at the door. Effortless.", scent: "Santal Blanc Mysore" },
-  { name: "Meher S.", city: "New Delhi", text: "Finally a perfume store in India that feels like a Paris boutique. Gift wrap was beautiful.", scent: "Alba" },
+const trust = [
+  { h: "Sealed bottles", p: "Full-size, sealed bottles with concentration, notes and size listed on every page.", to: "/authenticity" as const },
+  { h: "Free delivery · Cash on Delivery", p: "Free delivery across India. See your parcel before you pay.", to: "/shipping" as const },
+  { h: "Help when you need it", p: "Problems with an order? Our returns policy explains what we do.", to: "/returns" as const },
 ];
 
 function Home() {
@@ -70,11 +70,11 @@ function Home() {
           <div className="hero-layer-copy">
             <div className="animate-rise">
               <Eyebrow>Maison de parfum · Curated in India</Eyebrow>
-              <h1 className="mt-8 max-w-3xl font-display text-6xl font-light leading-[0.9] sm:text-7xl md:text-[8.5rem]">Find your <em>signature</em> scent</h1>
-              <p className="mt-8 max-w-md text-lg font-light text-muted-foreground">Niche houses and haute parfumerie, edited with patience. Delivered free to your door — pay in cash when it arrives.</p>
+              <h1 className="mt-8 max-w-3xl font-display text-6xl font-light leading-[0.9] sm:text-7xl md:text-8xl">Discover authentic perfumes, find your <em>signature scent.</em></h1>
+              <p className="mt-8 max-w-md text-lg font-light text-muted-foreground">Explore premium and designer fragrances with Olféra. Discover fragrance families, understand scent profiles, and find perfumes that suit your personality and lifestyle.</p>
               <div className="mt-12 flex flex-wrap gap-4">
-                <Link to="/shop" className="btn-gold">Shop the collection <ArrowRight className="h-4 w-4" /></Link>
-                <Link to="/finder" className="btn-ghost-gold">Discover your scent</Link>
+                <Link to="/shop" className="btn-gold">Explore Perfumes <ArrowRight className="h-4 w-4" /></Link>
+                <Link to="/finder" className="btn-ghost-gold">Find Your Fragrance</Link>
               </div>
             </div>
           </div>
@@ -208,20 +208,19 @@ function Home() {
         </div>
       </section>
 
-      {/* Reviews */}
+      {/* Trust */}
       <section className="mx-auto max-w-7xl px-6 py-28">
         <div className="text-center">
-          <Eyebrow>Kind words</Eyebrow>
-          <h2 className="mt-4 font-display text-5xl font-light md:text-6xl">Worn and <em>loved.</em></h2>
+          <Eyebrow>Shop with confidence</Eyebrow>
+          <h2 className="mt-4 font-display text-5xl font-light md:text-6xl">Clear, <em>honest</em> buying.</h2>
         </div>
         <div className="mt-14 grid gap-8 md:grid-cols-3">
-          {reviews.map((r) => (
-            <figure key={r.name} className="rounded-[2rem] border border-border bg-card p-8">
-              <Quote className="h-6 w-6 text-accent" strokeWidth={1.2} />
-              <div className="mt-4 flex gap-1 text-accent">{Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-3.5 w-3.5 fill-current" />)}</div>
-              <blockquote className="mt-4 font-display text-xl leading-snug">"{r.text}"</blockquote>
-              <figcaption className="mt-6 text-xs uppercase tracking-[0.2em] text-muted-foreground">{r.name} · {r.city}<span className="block pt-1 normal-case tracking-normal text-accent">Wears {r.scent}</span></figcaption>
-            </figure>
+          {trust.map((t) => (
+            <Link key={t.h} to={t.to} className="rounded-[2rem] border border-border bg-card p-8 transition-colors hover:border-accent">
+              <h3 className="font-display text-2xl">{t.h}</h3>
+              <p className="mt-3 text-sm text-muted-foreground">{t.p}</p>
+              <span className="mt-6 inline-block text-xs uppercase tracking-[0.25em] text-accent">Read more</span>
+            </Link>
           ))}
         </div>
       </section>
@@ -233,7 +232,7 @@ function Home() {
           <Eyebrow>The Olféra journal · A beginner's note</Eyebrow>
           <h2 className="mt-4 font-display text-5xl font-light md:text-6xl">A fragrance is more than its <em>first impression.</em></h2>
           <p className="mt-6 text-muted-foreground">Give it a little time. The bright opening gives way to a quieter heart, then settles close to skin. The best way to know a scent is to live with it.</p>
-          <Link to="/finder" className="btn-ghost-gold mt-10">Take the fragrance finder</Link>
+          <div className="mt-10 flex flex-wrap gap-4"><Link to="/finder" className="btn-ghost-gold">Take the fragrance finder</Link><Link to="/journal" className="btn-ghost-gold">Read the Journal</Link></div>
         </div>
       </section>
     </main>

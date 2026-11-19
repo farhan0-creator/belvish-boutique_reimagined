@@ -11,17 +11,25 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticityRouteImport } from './routes/authenticity'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FamiliesRouteImport } from './routes/families'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as FinderRouteImport } from './routes/finder'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as ReturnsRouteImport } from './routes/returns'
+import { Route as ShippingRouteImport } from './routes/shipping'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TrackRouteImport } from './routes/track'
 import { Route as WishlistRouteImport } from './routes/wishlist'
 import { Route as AuthenticatedAccountRouteImport } from './routes/_authenticated/account'
+import { Route as JournalIndexRouteImport } from './routes/journal/index'
+import { Route as JournalSlugRouteImport } from './routes/journal/$slug'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -33,9 +41,19 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticityRoute = AuthenticityRouteImport.update({
+  id: '/authenticity',
+  path: '/authenticity',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CheckoutRoute = CheckoutRouteImport.update({
@@ -63,14 +81,34 @@ const FinderRoute = FinderRouteImport.update({
   path: '/finder',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResetPasswordRoute = ResetPasswordRouteImport.update({
   id: '/reset-password',
   path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReturnsRoute = ReturnsRouteImport.update({
+  id: '/returns',
+  path: '/returns',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShippingRoute = ShippingRouteImport.update({
+  id: '/shipping',
+  path: '/shipping',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TrackRoute = TrackRouteImport.update({
@@ -88,6 +126,16 @@ const AuthenticatedAccountRoute = AuthenticatedAccountRouteImport.update({
   path: '/account',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const JournalIndexRoute = JournalIndexRouteImport.update({
+  id: '/journal/',
+  path: '/journal/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JournalSlugRoute = JournalSlugRouteImport.update({
+  id: '/journal/$slug',
+  path: '/journal/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductSlugRoute = ProductSlugRouteImport.update({
   id: '/product/$slug',
   path: '/product/$slug',
@@ -96,114 +144,170 @@ const ProductSlugRoute = ProductSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/authenticity': typeof AuthenticityRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/families': typeof FamiliesRoute
   '/faq': typeof FaqRoute
   '/finder': typeof FinderRoute
+  '/privacy': typeof PrivacyRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/returns': typeof ReturnsRoute
+  '/shipping': typeof ShippingRoute
   '/shop': typeof ShopRoute
+  '/terms': typeof TermsRoute
   '/track': typeof TrackRoute
   '/wishlist': typeof WishlistRoute
   '/account': typeof AuthenticatedAccountRoute
+  '/journal/$slug': typeof JournalSlugRoute
   '/product/$slug': typeof ProductSlugRoute
+  '/journal/': typeof JournalIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/authenticity': typeof AuthenticityRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/families': typeof FamiliesRoute
   '/faq': typeof FaqRoute
   '/finder': typeof FinderRoute
+  '/privacy': typeof PrivacyRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/returns': typeof ReturnsRoute
+  '/shipping': typeof ShippingRoute
   '/shop': typeof ShopRoute
+  '/terms': typeof TermsRoute
   '/track': typeof TrackRoute
   '/wishlist': typeof WishlistRoute
   '/account': typeof AuthenticatedAccountRoute
+  '/journal/$slug': typeof JournalSlugRoute
   '/product/$slug': typeof ProductSlugRoute
+  '/journal': typeof JournalIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/authenticity': typeof AuthenticityRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/families': typeof FamiliesRoute
   '/faq': typeof FaqRoute
   '/finder': typeof FinderRoute
+  '/privacy': typeof PrivacyRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/returns': typeof ReturnsRoute
+  '/shipping': typeof ShippingRoute
   '/shop': typeof ShopRoute
+  '/terms': typeof TermsRoute
   '/track': typeof TrackRoute
   '/wishlist': typeof WishlistRoute
   '/_authenticated/account': typeof AuthenticatedAccountRoute
+  '/journal/$slug': typeof JournalSlugRoute
   '/product/$slug': typeof ProductSlugRoute
+  '/journal/': typeof JournalIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/auth'
+    | '/authenticity'
     | '/checkout'
     | '/contact'
     | '/families'
     | '/faq'
     | '/finder'
+    | '/privacy'
     | '/reset-password'
+    | '/returns'
+    | '/shipping'
     | '/shop'
+    | '/terms'
     | '/track'
     | '/wishlist'
     | '/account'
+    | '/journal/$slug'
     | '/product/$slug'
+    | '/journal/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/auth'
+    | '/authenticity'
     | '/checkout'
     | '/contact'
     | '/families'
     | '/faq'
     | '/finder'
+    | '/privacy'
     | '/reset-password'
+    | '/returns'
+    | '/shipping'
     | '/shop'
+    | '/terms'
     | '/track'
     | '/wishlist'
     | '/account'
+    | '/journal/$slug'
     | '/product/$slug'
+    | '/journal'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
+    | '/about'
     | '/auth'
+    | '/authenticity'
     | '/checkout'
     | '/contact'
     | '/families'
     | '/faq'
     | '/finder'
+    | '/privacy'
     | '/reset-password'
+    | '/returns'
+    | '/shipping'
     | '/shop'
+    | '/terms'
     | '/track'
     | '/wishlist'
     | '/_authenticated/account'
+    | '/journal/$slug'
     | '/product/$slug'
+    | '/journal/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
+  AuthenticityRoute: typeof AuthenticityRoute
   CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
   FamiliesRoute: typeof FamiliesRoute
   FaqRoute: typeof FaqRoute
   FinderRoute: typeof FinderRoute
+  PrivacyRoute: typeof PrivacyRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
+  ReturnsRoute: typeof ReturnsRoute
+  ShippingRoute: typeof ShippingRoute
   ShopRoute: typeof ShopRoute
+  TermsRoute: typeof TermsRoute
   TrackRoute: typeof TrackRoute
   WishlistRoute: typeof WishlistRoute
+  JournalSlugRoute: typeof JournalSlugRoute
   ProductSlugRoute: typeof ProductSlugRoute
+  JournalIndexRoute: typeof JournalIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -222,11 +326,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth': {
       id: '/auth'
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/authenticity': {
+      id: '/authenticity'
+      path: '/authenticity'
+      fullPath: '/authenticity'
+      preLoaderRoute: typeof AuthenticityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/checkout': {
@@ -264,6 +382,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FinderRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reset-password': {
       id: '/reset-password'
       path: '/reset-password'
@@ -271,11 +396,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/returns': {
+      id: '/returns'
+      path: '/returns'
+      fullPath: '/returns'
+      preLoaderRoute: typeof ReturnsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shipping': {
+      id: '/shipping'
+      path: '/shipping'
+      fullPath: '/shipping'
+      preLoaderRoute: typeof ShippingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop': {
       id: '/shop'
       path: '/shop'
       fullPath: '/shop'
       preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/track': {
@@ -298,6 +444,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/account'
       preLoaderRoute: typeof AuthenticatedAccountRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/journal/': {
+      id: '/journal/'
+      path: '/journal'
+      fullPath: '/journal/'
+      preLoaderRoute: typeof JournalIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/journal/$slug': {
+      id: '/journal/$slug'
+      path: '/journal/$slug'
+      fullPath: '/journal/$slug'
+      preLoaderRoute: typeof JournalSlugRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/product/$slug': {
       id: '/product/$slug'
@@ -323,17 +483,25 @@ const AuthenticatedRouteRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
+  AuthenticityRoute: AuthenticityRoute,
   CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
   FamiliesRoute: FamiliesRoute,
   FaqRoute: FaqRoute,
   FinderRoute: FinderRoute,
+  PrivacyRoute: PrivacyRoute,
   ResetPasswordRoute: ResetPasswordRoute,
+  ReturnsRoute: ReturnsRoute,
+  ShippingRoute: ShippingRoute,
   ShopRoute: ShopRoute,
+  TermsRoute: TermsRoute,
   TrackRoute: TrackRoute,
   WishlistRoute: WishlistRoute,
+  JournalSlugRoute: JournalSlugRoute,
   ProductSlugRoute: ProductSlugRoute,
+  JournalIndexRoute: JournalIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
