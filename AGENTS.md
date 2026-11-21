@@ -19,3 +19,5 @@
 - Announcement bar and promo banner come from the single-row `store_settings` table (public read, backend-only write), loaded by the root route loader so they render server-side; read them via `useStoreSettings()`.
 - The scroll fade-in only marks elements React has already hydrated, using a `data-reveal` attribute, so it never causes hydration mismatches.
 - Off-Lovable builds (Vercel/Netlify): server.ts falls back to the VITE_ publishable Supabase values, social sign-in starts via the Lovable site's /~oauth broker, and the admin dashboard links to the Lovable site — those hosts lack Lovable's proxy and the service-role key.
+
+- Order prices are enforced in the database: a BEFORE INSERT trigger re-prices `orders` from the private `product_prices` table, so direct inserts cannot set totals. Keep `product_prices` in sync whenever catalog prices or products change.

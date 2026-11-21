@@ -98,6 +98,24 @@ export type Database = {
         }
         Relationships: []
       }
+      product_prices: {
+        Row: {
+          name: string
+          price: number
+          slug: string
+        }
+        Insert: {
+          name: string
+          price: number
+          slug: string
+        }
+        Update: {
+          name?: string
+          price?: number
+          slug?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
